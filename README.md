@@ -1,8 +1,9 @@
 # unraid-lxc-unifi-os
 
 Unofficial unRAID LXC template and build scripts for **UniFi OS Server** on a **privileged Debian 12 LXC**.
-
 This repository is the successor to `bmartino1/unraid-lxc-unifi` and is meant to follow Ubiquiti's move from the legacy UniFi Network Server to **UniFi OS Server**.
+
+Ubiquiti's current self-hosting documentation says UniFi OS Server only self-hosts UniFi Network plus key UniFi OS features, and that Protect, Access, Talk, Connect, and other UniFi applications must still run on a compatible UniFi Console...
 
 ## What this repo does
 
@@ -17,9 +18,7 @@ This repository is the successor to `bmartino1/unraid-lxc-unifi` and is meant to
 
 ## Important limitation: UniFi Protect
 
-**Do not advertise this repo as a UniFi Protect self-hosting solution.**
-
-Ubiquiti's current self-hosting documentation says **UniFi OS Server only self-hosts UniFi Network plus key UniFi OS features**, and that **Protect, Access, Talk, Connect, and other UniFi applications must still run on a compatible UniFi Console**.
+**UniFi OS Server only self-hosts UniFi Network plus key UniFi OS features**, and that **Protect, Access, Talk, Connect, and other UniFi applications must still run on a compatible UniFi Console**.
 
 That means this LXC can still mount SMB storage for things like:
 
@@ -28,7 +27,7 @@ That means this LXC can still mount SMB storage for things like:
 - migration files
 - general admin data
 
-But it should **not** claim to self-host Protect recording storage.
+But it does **not** claim to self-host Protect recording storage. nor implement. This is for unfi os and netowrk only! untill unifi give the realease and go ahead for self hosted protect once more.
 
 ## Upstream references
 
@@ -55,6 +54,7 @@ Because of that, the builder uses a small config file instead of trying to scrap
 
 Edit this file before building:
 
+WIP - a setup.sh scrip-t and env... will alter be avilabed at LXC root...
 `build/unifi-os.env`
 
 Example:
