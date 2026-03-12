@@ -1,29 +1,23 @@
 #!/bin/bash
 set -euo pipefail
-export DEBIAN_FRONTEND=noninteractive
 
-apt-get update
-apt-get install -y --no-install-recommends \
-  ca-certificates \
-  curl \
-  wget \
-  gnupg \
-  jq \
-  nano \
-  podman \
-  slirp4netns \
-  uidmap \
-  fuse-overlayfs \
-  containernetworking-plugins \
-  cifs-utils \
-  smbclient \
-  unzip \
-  rsync \
-  acl \
-  systemd \
-  dbus \
-  dbus-user-session
+echo "Installing base dependencies..."
 
-systemctl enable podman.service >/dev/null 2>&1 || true
+apt update
 
-echo "Completed base dependencies and Podman prerequisites"
+apt install -y \
+curl \
+wget \
+ca-certificates \
+gnupg \
+lsb-release \
+systemd \
+podman \
+slirp4netns \
+uidmap \
+dbus \
+jq \
+mc \
+cifs-utils
+
+echo "Dependencies installed."
