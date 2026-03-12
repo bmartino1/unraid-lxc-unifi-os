@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo "UniFi OS status"
-echo "------------------------"
+echo "UniFi OS Status"
+echo "--------------------------------"
 
 systemctl status unifi-os --no-pager
 
@@ -10,5 +10,5 @@ echo "Running containers:"
 podman ps
 
 echo ""
-echo "IP:"
+echo "IP Address:"
 hostname -I
