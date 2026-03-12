@@ -1,32 +1,20 @@
 #!/bin/bash
 set -euo pipefail
-export DEBIAN_FRONTEND=noninteractive
 
-source /tmp/build/unifi-os.env
+ENV_FILE="/root/unifi-os.env"
 
-if [ -z "${UNIFI_OS_URL:-}" ]; then
-  echo "ERROR: UNIFI_OS_URL is empty in /tmp/build/unifi-os.env"
-  exit 1
+if [ -f "$ENV_FILE" ]; then
+    source "$ENV_FILE"
 fi
 
-if [ -z "${UNIFI_OS_FILENAME:-}" ]; then
-  UNIFI_OS_FILENAME="unifi-os-server-linux-x64.bin"
-fi
+echo "Installing UniFi OS Server..."
 
-install -d -m 0755 /root/unifi-os-installer
-wget -O "/root/unifi-os-installer/${UNIFI_OS_FILENAME}" "${UNIFI_OS_URL}"
-chmod +x "/root/unifi-os-installer/${UNIFI_OS_FILENAME}"
+cd /tmp
 
-if [ -n "${UNIFI_HOSTNAME:-}" ]; then
-  hostnamectl set-hostname "${UNIFI_HOSTNAME}" || true
-fi
+wget -O unifi-os.deb "$UNIFI_OS_DOWNLOAD"
 
-# The official installer performs its own service and host integration.
-# Run from a writable directory inside the LXC.
-cd /root/unifi-os-installer
-"/root/unifi-os-installer/${UNIFI_OS_FILENAME}" install
+apt install -y ./unifi-os.deb
 
-systemctl enable uosserver >/dev/null 2>&1 || true
-systemctl restart uosserver || true
+systemctl enable unifi-os
 
-echo "Installed official UniFi OS Server binary"
+echo "UniFi OS installed."
