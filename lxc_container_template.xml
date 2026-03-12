@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LXC version="0.1">
+  <Name>unifi-os</Name>
+  <Distribution>debian</Distribution>
+  <Release>bookworm</Release>
+  <Architecture>amd64</Architecture>
+  <Repository>https://github.com/bmartino1/unraid-lxc-unifi-os</Repository>
+  <Description>UniFi OS Server on Debian 12 LXC</Description>
+  <Privileged>true</Privileged>
+  <Autostart>true</Autostart>
+  <Beta>True</Beta>
+  <Support>https://github.com/bmartino1/unraid-lxc-unifi-os/issues</Support>
+  <Source>https://ui.com/</Source>
+  <Project>https://ui.com/download/software/unifi-os-server</Project>
+  <Overview>Installs the official UniFi OS Server inside a privileged Debian 12 LXC for unRAID. Includes Podman, systemd, slirp4netns, and optional SMB client tooling for backup/export storage.</Overview>
+  <Category>Network:Tools:</Category>
+  <WebUI>https://[IP]:11443/</WebUI>
+  <Icon>https://raw.githubusercontent.com/bmartino1/unraid-lxc-unifi-os/main/ubiquiti.256x256.png</Icon>
+  <DonateText>If you like my work, you can support it here:</DonateText>
+  <DonateLink>https://www.paypal.com/donate/?business=PA3ZHF52483KW</DonateLink>
+  <Requires>unRAID server</Requires>
+</LXC>

@@ -1,0 +1,23 @@
+As of 2026-03-12
+
+Official UniFi references to track
+- Downloads: https://ui.com/download/software/unifi-os-server
+- Announcement: https://blog.ui.com/article/introducing-unifi-os-server
+- Self-hosting doc: https://help.ui.com/hc/en-us/articles/34210126298775-Self-Hosting-UniFi
+
+What changed vs old repo
+- Legacy self-hosted UniFi Network Server is no longer the forward path.
+- UniFi OS Server is now the documented self-hosting standard.
+- Linux requirements include systemd, podman 4.3.1+, slirp4netns 1.2+, Debian 12+ or similar.
+- Web UI is on 11443/tcp instead of the legacy 8443-first expectation.
+
+Critical product limitation
+- Ubiquiti says self-hosted UniFi OS Server does NOT self-host Protect, Access, Talk, Connect, or other UniFi apps.
+- This repo should not promise Protect support.
+- SMB support here is for backups / exports / admin storage only.
+
+Operational assumptions in this repo
+- Privileged LXC is required.
+- systemd must run inside the container.
+- Podman runs inside the LXC because UniFi OS Server depends on it.
+- The official download URL should be stored in build/unifi-os.env and refreshed when Ubiquiti releases a new build.

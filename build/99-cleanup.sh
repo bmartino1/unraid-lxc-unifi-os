@@ -1,0 +1,9 @@
+#!/bin/bash
+set -euo pipefail
+
+apt-get clean
+rm -rf /var/cache/apt/archives/*
+rm -f /etc/ssh/*_key /etc/ssh/*.pub
+find /var/log -type f -mtime +30 -exec rm -f {} \;
+
+echo "Completed cleanup"
